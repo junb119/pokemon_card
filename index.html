@@ -1,0 +1,114 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="pika.webp" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="rirra.png" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="rizardmong.png" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="1.png" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="2.png" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="3.jpg" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="4.jpg" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="5.jpg" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+  <div class="container">
+    <div class="overlay"></div>
+    <img src="6.jpg" alt="" class="card" />
+    <!-- <div class="card"></div> -->
+  </div>
+</div>
+
+<script>
+  var container = document.querySelectorAll(".container");
+  container.forEach((item) => {
+    var overlay = item.querySelector(".overlay");
+    item.addEventListener("mousemove", function (e) {
+      var x = e.offsetX;
+      var y = e.offsetY;
+      var rotateY = (-1 / 5) * x + 20;
+      var rotateX = (4 / 30) * y - 20;
+
+      overlay.style = `background-position : ${
+        x / 5 + y / 5
+      }%; filter : opacity(${x / 200}) brightness(1.2)`;
+
+      item.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    item.addEventListener("mouseout", function () {
+      overlay.style = "filter : opacity(0)";
+      item.style = "transform : perspective(350px) rotateY(0deg) rotateX(0deg)";
+    });
+  });
+</script>
+
+<style>
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 720px;
+    height: 100vh;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .container {
+    width: 220px;
+    height: 310px;
+    transition: all 0.1s;
+    position: relative;
+  }
+  .overlay {
+    position: absolute;
+    width: 220px;
+    height: 310px;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 219, 112, 0.8) 45%,
+      rgba(132, 50, 255, 0.6) 50%,
+      transparent 54%
+    );
+    filter: brightness(1.1) opacity(0.8);
+    mix-blend-mode: color-dodge;
+    background-size: 150% 150%;
+    background-position: 100%;
+    transition: all 0.1s;
+  }
+  .card {
+    width: 220px;
+    height: 310px;
+    /* background-image: url(pika.webp);
+    background-size: cover; */
+    object-fit: cover;
+  }
+</style>
